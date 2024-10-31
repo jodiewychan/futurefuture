@@ -1,1 +1,145 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Future</title>
+  
+  <!-- Link to Shantell Sans font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@700&display=swap">
+  
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body, html {
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Shantell Sans', sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      flex-direction: column;
+      color: #000;
+    }
+
+    /* Top Navigation */
+    .nav {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh; /* Allocate 10% of viewport height */
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Sticky Animation Wrapper */
+    .sticky-animation {
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+      height: 80vh; /* Contain animation within viewport */
+    }
+
+    /* Replicas Wrapper */
+    .sticky-animation__replicas {
+      position: absolute;
+      top: 0; /* Start from the top */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+
+    /* Replica Text Styling */
+    .sticky-animation__replica {
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.08); /* Lighter color for layered effect */
+      text-transform: uppercase;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      transition: transform 0.1s ease-out;
+    }
+
+    /* Contact Section Styling */
+    .contact {
+      padding: 10px;
+      text-align: center;
+      background-color: #f0f0f0;
+      font-size: 1rem;
+      color: #555;
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <header class="nav">
+    <div class="logo">Future Future</div>
+  </header>
+
+  <!-- Sticky Animation Component -->
+  <div class="sticky-animation">
+    <div class="sticky-animation__replicas" aria-hidden="true">
+      <div class="h1-alt sticky-animation__replica" data-speed="0.2" style="transform: translateY(-150px);">Ventures For Tomorrow</div>
+      <div class="h1-alt sticky-animation__replica" data-speed="0.4" style="transform: translateY(-250px);">Ventures For Tomorrow</div>
+      <div class="h1-alt sticky-animation__replica" data-speed="0.6" style="transform: translateY(-350px);">Ventures For Tomorrow</div>
+      <div class="h1-alt sticky-animation__replica" data-speed="0.8" style="transform: translateY(-450px);">Ventures For Tomorrow</div>
+      <div class="h1-alt sticky-animation__replica" data-speed="1.0" style="transform: translateY(-550px);">Ventures For Tomorrow</div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <p>Contact: email@example.com</p> <!-- Placeholder for email -->
+  </section>
+
+  <!-- JavaScript for Smooth Parallax Effect -->
+  <script>
+    function animateReplicas() {
+      const replicas = document.querySelectorAll('.sticky-animation__replica');
+      let offset = 0; // Initial offset
+
+      function animate() {
+        offset += 1; // Increased increment for faster movement
+
+        replicas.forEach((replica) => {
+          const speed = parseFloat(replica.getAttribute('data-speed'));
+          const yPos = offset * speed;
+
+          // Apply transformation based on calculated Y position
+          replica.style.transform = `translate(-50%, ${yPos}px)`;
+        });
+
+        requestAnimationFrame(animate); // Loop the animation
+      }
+
+      animate();
+    }
+
+    animateReplicas(); // Start the animation
+  </script>
+
+</body>
+</html>
